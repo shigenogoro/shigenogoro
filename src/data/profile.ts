@@ -12,10 +12,10 @@ export const profile: Profile = {
     'ex-Honda Research Institute',
   ],
   valueProp:
-    'I build retrieval and reasoning systems that make large language models more accurate, grounded, and efficient. I like taking ideas from research prototype all the way to something people can actually use.',
+    'I build LLM and retrieval systems, measure them, and run them in production. I like taking an idea from a research prototype to something people actually use.',
   about: [
-    'I earned my MS in Computer Science from UMass Amherst in 2026. As a Graduate Research Extern at Honda Research Institute & 99P Labs, I worked on repo-level Graph-RAG with Prof. Andrew McCallum: knowledge graphs, AST-level indexing, and code retrieval that gives models the structural context text similarity alone misses.',
-    'Right now I am building PuckAI, a live full-stack ML platform I started as an independent project and now develop through UMass CICS CICStep. It tiers and projects NHL skaters across five decades (6,184 players, 54,933 scored prospects), ships 7,643 grounded scouting reports behind a deterministic validator, and answers natural-language questions through a hybrid RAG stack I measured end to end. I have also built a multi-agent RAG filtering pipeline that trades an expensive LLM judge for lightweight rule-based thresholds, a timestamp-aligned summarization pipeline on fine-tuned BART and BERT self-retrieval, and Fan2see, a video platform I co-founded on PERN and AWS.',
+    'I earned my MS in Computer Science from UMass Amherst in 2026. At Honda Research Institute & 99P Labs I worked with Prof. Andrew McCallum on code retrieval for large repositories: a knowledge graph built from the AST, searched together with BM25, so a model can find code across files.',
+    'Right now I am building PuckAI, a live hockey analytics product I built and run on my own. It tiers and projects NHL skaters across five decades (6,184 players, 54,933 scored prospects), publishes 7,643 scouting reports that each pass a deterministic validator, and answers questions through a hybrid RAG chat I measured end to end. This fall I turned that chat into a LangGraph agent that can search the web and pull highlight videos. Before PuckAI I co-founded Fan2see, a video platform built on PERN and AWS, and at UMass I built a multi-agent RAG filtering pipeline and a timestamp-aligned summarization pipeline.',
     'My path is a little unusual: an MS in Physics and a BS in Electrical Engineering before CS.',
   ],
   quickFacts: [

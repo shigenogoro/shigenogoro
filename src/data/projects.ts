@@ -4,12 +4,13 @@ import puckaiPlayerPage from '../assets/photo/puckai_player_page_full.png'
 export const projects: Project[] = [
   {
     name: 'PuckAI',
-    tagline: 'Live full-stack NHL analytics platform with AI scouting reports',
+    tagline: 'Live NHL analytics platform with a RAG scouting chat and a tool-using agent',
     description:
       'A live platform that tiers, profiles, and projects NHL skaters across five decades (1968 to present): 6,184 players, 54,933 scored prospects, and 7,643 grounded scouting reports. A 14-stage ETL (nine-stage NHL core plus five-stage prospect extension) ingests NHL.com, all 63 NCAA Division I programs, and 11 HockeyTech leagues into PostgreSQL + pgvector. The serving layer adds era-adjusted tiering, a three-stage XGBoost prospect model, pgvector comparables, and sub-millisecond PrefixTrie autocomplete.',
     highlights: [
-      '7,643 grounded scouting reports (all validated, 0 quarantined) built from pipeline-computed numbers only, with a deterministic validator the generator must pass in a self-check loop',
-      'Production RAG chatbot with hybrid pgvector HNSW + Postgres full-text search, Voyage embeddings, cross-encoder rerank, and a deterministic team/league router. NDCG@10 0.488 to 0.682 on a 77-query benchmark; scope-limited queries 0.376/0.307 to 1.000',
+      '7,643 scouting reports, all validated and 0 quarantined. The LLM only narrates numbers the pipeline computed, and a deterministic validator checks every report before it is published',
+      'RAG chatbot with hybrid pgvector HNSW + Postgres full-text search, Voyage embeddings, cross-encoder rerank, and a deterministic team/league router: NDCG@10 0.482 to 0.686 on a 78-query benchmark, and team/league queries 0.415/0.307 to 1.000',
+      'Scout Agent: a LangGraph tool loop with Tavily web search and YouTube highlights, a two-layer fact check on web answers, an identity check on every video, an MCP server, and OpenTelemetry tracing. It picked the right tools on 26 of 26 test questions',
       'Three-stage XGBoost hurdle model on 481,000 pre-NHL season lines: reach NHL at ROC-AUC 0.977, durability head, and ordinal landing tier across 1,295 leagues',
       'Era-adjusted tiering with per-(season, position) z-scores so cross-era skaters rank on one ladder',
       'pgvector nearest-neighbor comparables on an 8-dimension career aspect vector',
@@ -21,6 +22,7 @@ export const projects: Project[] = [
       'Supabase',
       'XGBoost',
       'Voyage AI',
+      'LangGraph',
       'Vercel',
     ],
     links: [
@@ -43,7 +45,7 @@ export const projects: Project[] = [
     name: 'Hindsight: Git Intelligence Layer',
     tagline: 'Repo-level Graph-RAG for code understanding',
     description:
-      'A Git intelligence layer that gives LLMs cross-file context keyword retrieval cannot reach. It fuses BM25 lexical retrieval with intent-conditioned graph traversal over a heterogeneous repository graph (directory, file, class, and function nodes), built from AST-level call graphs and benchmarked on DeepCodeBench and LocBench.',
+      'A Git intelligence layer that gives LLMs context from across a repository. It fuses BM25 lexical retrieval with intent-conditioned graph traversal over a heterogeneous repository graph (directory, file, class, and function nodes), built from AST-level call graphs and benchmarked on DeepCodeBench and LocBench.',
     highlights: [
       'Intent-conditioned traversal: an LLM labels each question leading, lagging, or exploratory to steer graph walks before retrieval',
       'Best file-level Acc@1 0.535 on DeepCodeBench with Qwen3-32B (+8.1 pts vs BM25, +11.2 pts vs adapted LocAgent; +12.9 pts with no location hint)',
@@ -70,12 +72,12 @@ export const projects: Project[] = [
     name: 'Multi-Agent RAG Filtering Pipeline',
     tagline: 'Alternative judge strategies for noise-robust retrieval',
     description:
-      'A Predictor-Judge-Generator RAG pipeline (reimplemented MAIN-RAG from scratch, since no public implementation existed) that replaces the expensive LLM judge with lightweight rule-based thresholds. Each (query, document, answer) tuple is scored by the logit margin between the "Yes" and "No" tokens, then filtered to cut noisy context at a fraction of the LLM-judge cost.',
+      'A Predictor-Judge-Generator RAG pipeline (reimplemented MAIN-RAG from scratch, since no public implementation existed) that replaces the expensive LLM judge with lightweight rule-based thresholds. Each (query, document, answer) tuple is scored by the logit margin between the "Yes" and "No" tokens, then filtered to cut noisy context before generation.',
     highlights: [
-      'Rule-based thresholds (mean+std, Otsu, quantile) match the original adaptive-threshold results across four benchmark datasets',
-      'Benchmarked BM25 / DPR / Contriever under identical generation settings on HotpotQA with EM, F1, and ROUGE-L',
-      'Showed an aggressive 0.7 score cutoff hurts BM25 by pruning helpful evidence on small corpora',
-      'First author of the 5-person ACM-format report (UMass CS646)',
+      'Rule-based thresholds (mean+std, Otsu, quantile) matched the original adaptive-threshold results across HotpotQA, FEVER, FiQA, and NQ',
+      'Filtering raised how often the kept documents contained the answer from 7.1% to 24.3% (HotpotQA, Mistral-7B) while cutting retained context from 20 to about 11 documents',
+      'Found that the harshest cutoff works with a strong judge but breaks down with a weaker one, where dropped evidence sends F1 to 0.112',
+      'Five-person ACM-format report for UMass CS646; I implemented the baseline and ran its experiments',
     ],
     tech: ['Python', 'RAG', 'BM25 / DPR / Contriever', 'Hugging Face'],
     links: [],
