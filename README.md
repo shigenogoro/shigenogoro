@@ -5,14 +5,12 @@ A single-page portfolio for an AI/ML Engineer job search, hosted on GitHub Pages
 
 ## About me
 
-I'm an AI/ML Engineer with an MS in Computer Science from UMass Amherst (2026). I build
-retrieval and reasoning systems that make large language models more accurate, grounded,
-and efficient — and I take them from research prototype to shipped product. I'm currently
-building [PuckAI](https://www.thepuckai.com/), a live full-stack NHL
-analytics platform with RAG scouting reports, and previously researched repo-level
-Graph-RAG as a Graduate Research Extern at Honda Research Institute & 99P Labs (advised by
-Prof. Andrew McCallum). My background spans an MS in Physics and a BS in Electrical
-Engineering before CS.
+I'm an AI/ML Engineer with an MS in Computer Science from UMass Amherst (2026). I build LLM and
+retrieval systems, measure them, and run them in production. Right now I'm building
+[PuckAI](https://www.thepuckai.com/), a live NHL analytics product with a RAG scouting chat and a
+LangGraph agent on top of it. Before that I worked on code retrieval for large repositories at Honda
+Research Institute & 99P Labs with Prof. Andrew McCallum. I came to CS after an MS in Physics and a
+BS in Electrical Engineering.
 
 - 📍 Amherst, MA
 - 🔗 [LinkedIn](https://www.linkedin.com/in/sheng-kai-wen/) · [GitHub](https://github.com/shigenogoro)

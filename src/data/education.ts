@@ -10,13 +10,13 @@ export const education: EducationItem[] = [
     period: 'Sep 2024 – May 2026',
     details: [
       'Focus: Retrieval-Augmented Generation, LLMs, Information Retrieval.',
-      'Graduate Research Extern at Honda Research Institute & 99P Labs (advised by Prof. Andrew McCallum).',
+      'AI Researcher (Graduate Extern) at Honda Research Institute & 99P Labs, with Prof. Andrew McCallum.',
     ],
     logo: umassLogo,
   },
   {
     school: 'National Tsing Hua University',
-    degree: 'M.S. in Physics (GPA 4.04 / 4.3)',
+    degree: 'M.S. in Physics',
     period: 'Sep 2020 – Jun 2023',
     details: [
       'Thesis: Study of Epitaxial Growth of TiₓAl₍₁₋ₓ₎N by Plasma-Assisted Molecular Beam Epitaxy.',
@@ -25,10 +25,10 @@ export const education: EducationItem[] = [
   },
   {
     school: 'National Dong Hwa University',
-    degree: 'B.S. in Electrical Engineering, minor in Computer Science (GPA 4.11 / 4.5)',
+    degree: 'B.S. in Electrical Engineering, minor in Computer Science',
     period: 'Sep 2016 – Jun 2020',
     details: [
-      'Co-authored IEDMS 2019 poster on a silver-fungus organic resistive-switching memory device.',
+      'First author of an IEDMS 2019 paper on a silver-fungus organic resistive-switching memory device.',
       'Award of Outstanding Academic Performance (ranked 3rd in department); President, NDHU Toastmasters Club.',
     ],
     logo: ndhuLogo,
