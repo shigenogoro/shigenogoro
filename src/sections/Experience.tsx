@@ -3,7 +3,7 @@ import TimelineItem from '../components/TimelineItem'
 import Reveal from '../components/Reveal'
 
 const Experience = () => (
-  <section id="experience" className="scroll-mt-20 border-t border-line/10 py-24">
+  <section id="experience" className="scroll-mt-20 border-t border-line/10 py-12">
     <div className="section-shell">
       <Reveal>
         <p className="section-kicker">Experience</p>
