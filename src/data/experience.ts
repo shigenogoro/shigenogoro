@@ -39,7 +39,7 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    role: 'AI Researcher (Graduate Extern)',
+    role: 'AI Researcher (Extern)',
     org: 'Honda Research Institute (HRI) & 99P Labs',
     location: 'Amherst, MA',
     period: 'Feb 2026 – May 2026',

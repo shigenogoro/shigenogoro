@@ -14,9 +14,9 @@ export const profile: Profile = {
   valueProp:
     'I build LLM and retrieval systems, measure them, and run them in production. I like taking an idea from a research prototype to something people actually use.',
   about: [
-    'I earned my MS in Computer Science from UMass Amherst in 2026. At Honda Research Institute & 99P Labs I worked with Prof. Andrew McCallum on code retrieval for large repositories: a knowledge graph built from the AST, searched together with BM25, so a model can find code across files.',
-    'Right now I am building PuckAI, a live hockey analytics product I built and run on my own. It tiers and projects NHL skaters across five decades (6,184 players, 54,933 scored prospects), publishes 7,643 scouting reports that each pass a deterministic validator, and answers questions through a hybrid RAG chat I measured end to end. This fall I turned that chat into a LangGraph agent that can search the web and pull highlight videos. Before PuckAI I co-founded Fan2see, a video platform built on PERN and AWS, and at UMass I built a multi-agent RAG filtering pipeline and a timestamp-aligned summarization pipeline.',
-    'My path is a little unusual: an MS in Physics and a BS in Electrical Engineering before CS.',
+    "I'm an AI/ML engineer, and most of my time goes into PuckAI, a hockey analytics platform I founded to give fans and scouts one place to research NHL players and prospects. I build and run it end to end: a RAG chatbot over 7,643 scouting reports, a three-stage XGBoost model that scores prospects, and a LangGraph agent that can search the web and pull highlight videos.",
+    'I finished my MS in Computer Science at UMass Amherst in 2026. While there, I joined the Hindsight team at Honda Research Institute & 99P Labs, where we built a codebase understanding system that pairs BM25 with knowledge-graph retrieval so a model can follow code across files.',
+    'Before CS, I studied electrical engineering and physics, and co-founded Fan2see, a video platform, in Taiwan. What I enjoy most is shipping something useful, measuring what works, and improving it from there.',
   ],
   quickFacts: [
     'Amherst, MA',
