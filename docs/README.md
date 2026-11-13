@@ -1,7 +1,7 @@
 # Portfolio site: development notes
 
 The portfolio is a single-page site hosted on GitHub Pages:
-**https://shigenogoro.github.io/profile/**
+**https://shigenogoro.github.io/shigenogoro/**
 
 ## Tech stack
 

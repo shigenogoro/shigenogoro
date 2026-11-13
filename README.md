@@ -3,7 +3,7 @@
 I'm an AI/ML Engineer with an M.S. in Computer Science from **UMass Amherst** (2026). I build LLM and
 retrieval systems, measure them, and run them in production.
 
-🌐 **Portfolio: [shigenogoro.github.io/profile](https://shigenogoro.github.io/profile/)**
+🌐 **Portfolio: [shigenogoro.github.io/shigenogoro](https://shigenogoro.github.io/shigenogoro/)**
 
 ### 🛠️ Technical Skills
 
