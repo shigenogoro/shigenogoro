@@ -16,7 +16,7 @@ export const experience: ExperienceItem[] = [
       'Shipped PuckAI Scout, a RAG chatbot over 7,643 AI-generated scouting reports that blends vector and keyword search (pgvector HNSW, Postgres full-text) with Voyage AI reranking.',
       "Set up a 78-query retrieval benchmark before tuning anything; ranking quality rose 42% (NDCG@10 0.482 to 0.686). The biggest jump came from sending team and league questions through SQL filters, since embeddings could not tell a player's current team.",
       'Learned early that prompting alone let the LLM invent statistics, so every number now comes from the data pipeline and a validator checks each report before it goes live (all 7,643 passed, 0 quarantined).',
-      'Traced answers about the wrong player to five separate name-matching leaks and closed them. Those answers went from 9 to 0, and clean answers from 67% to 80% on a 132-question set.',
+      'Traced answers about the wrong player to seven separate causes and fixed them. Those answers went from 9 to 0, and clean answers from 67% to 80% on a 132-question set.',
       'Extended Scout into a LangGraph agent with web search and YouTube highlights. On a 26-question eval it picked the right tools every time with no unrequested searches, and it rejected all 14 wrong-player videos.',
       'Trained a three-stage XGBoost model on 481,000 pre-NHL seasons across 1,295 leagues to predict which prospects make the NHL (held-out ROC-AUC 0.977).',
     ],
