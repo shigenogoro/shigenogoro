@@ -2,7 +2,7 @@ import { profile } from '../data/profile'
 import Reveal from '../components/Reveal'
 
 const About = () => (
-  <section id="about" className="scroll-mt-20 py-24">
+  <section id="about" className="scroll-mt-20 py-12">
     <div className="section-shell">
       <Reveal>
         <p className="section-kicker">About</p>

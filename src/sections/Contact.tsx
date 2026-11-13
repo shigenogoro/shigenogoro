@@ -3,7 +3,7 @@ import SocialLinks from '../components/SocialLinks'
 import Reveal from '../components/Reveal'
 
 const Contact = () => (
-  <section id="contact" className="scroll-mt-20 border-t border-line/10 py-24">
+  <section id="contact" className="scroll-mt-20 border-t border-line/10 py-12">
     <div className="section-shell text-center">
       <Reveal>
         <p className="section-kicker">Contact</p>

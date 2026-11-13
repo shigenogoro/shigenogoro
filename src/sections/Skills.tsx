@@ -2,7 +2,7 @@ import { skills } from '../data/skills'
 import Reveal from '../components/Reveal'
 
 const Skills = () => (
-  <section id="skills" className="scroll-mt-20 border-t border-line/10 py-24">
+  <section id="skills" className="scroll-mt-20 border-t border-line/10 py-12">
     <div className="section-shell">
       <Reveal>
         <p className="section-kicker">Skills</p>

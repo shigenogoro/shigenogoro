@@ -7,7 +7,7 @@ import avatar from '../assets/photo/umass_hockey.jpg'
 const Hero = () => (
   <section
     id="top"
-    className="relative flex min-h-screen items-center overflow-hidden pt-16"
+    className="relative flex min-h-[100svh] items-center overflow-hidden pb-12 pt-24 sm:pb-24"
   >
     {/* background glow */}
     <div
@@ -87,6 +87,27 @@ const Hero = () => (
         </div>
       </motion.div>
     </div>
+
+    {/* scroll cue: makes the space under the hero read as intentional */}
+    <a
+      href="#about"
+      aria-label="Scroll to About"
+      className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-xs font-medium uppercase tracking-[0.25em] text-muted transition hover:text-accent sm:flex"
+    >
+      <span>Scroll</span>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 motion-safe:animate-bounce"
+      >
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </a>
   </section>
 )
 
