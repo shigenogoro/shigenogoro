@@ -30,8 +30,6 @@ retrieval systems, measure them, and run them in production.
 ### 📫 Connect With Me
 
 - [LinkedIn](https://www.linkedin.com/in/sheng-kai-wen/)
-- [Portfolio](https://shigenogoro.github.io/profile/)
-- [PuckAI](https://www.thepuckai.com)
 - ✉️ gorowen56@gmail.com
 
 ---
