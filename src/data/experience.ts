@@ -8,7 +8,7 @@ export const experience: ExperienceItem[] = [
     role: 'Founder & AI/ML Engineer',
     org: 'PuckAI',
     location: 'Amherst, MA',
-    period: 'May 2025 – Present',
+    period: 'May 2025 – Nov 2026',
     logo: puckaiLogo,
     summary:
       'I built and launched PuckAI to give hockey fans and scouts one place to research NHL players and prospects, and I run it myself: scrapers, ETL, models, serving, auth, and deployment.',

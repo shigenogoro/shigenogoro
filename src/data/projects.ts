@@ -4,9 +4,9 @@ import puckaiPlayerPage from '../assets/photo/puckai_player_page_full.png'
 export const projects: Project[] = [
   {
     name: 'PuckAI',
-    tagline: 'Live NHL analytics platform with a RAG scouting chat and a tool-using agent',
+    tagline: 'NHL analytics platform with a RAG scouting chat and a tool-using agent',
     description:
-      'A live platform that tiers, profiles, and projects NHL skaters across five decades (1968 to present): 6,184 players, 54,933 scored prospects, and 7,643 grounded scouting reports. A 14-stage ETL (nine-stage NHL core plus five-stage prospect extension) ingests NHL.com, all 63 NCAA Division I programs, and 11 HockeyTech leagues into PostgreSQL + pgvector. The serving layer adds era-adjusted tiering, a three-stage XGBoost prospect model, pgvector comparables, and sub-millisecond PrefixTrie autocomplete.',
+      'A production platform that tiers, profiles, and projects NHL skaters across five decades (1968 to present): 6,184 players, 54,933 scored prospects, and 7,643 grounded scouting reports. A 14-stage ETL (nine-stage NHL core plus five-stage prospect extension) ingests NHL.com, all 63 NCAA Division I programs, and 11 HockeyTech leagues into PostgreSQL + pgvector. The serving layer adds era-adjusted tiering, a three-stage XGBoost prospect model, pgvector comparables, and sub-millisecond PrefixTrie autocomplete.',
     highlights: [
       '7,643 scouting reports, all validated and 0 quarantined. The LLM only narrates numbers the pipeline computed, and a deterministic validator checks every report before it is published',
       'RAG chatbot with hybrid pgvector HNSW + Postgres full-text search, Voyage embeddings, cross-encoder rerank, and a deterministic team/league router: NDCG@10 0.482 to 0.686 on a 78-query benchmark, and team/league queries 0.415/0.307 to 1.000',
@@ -26,7 +26,6 @@ export const projects: Project[] = [
       'Vercel',
     ],
     links: [
-      { label: 'Live Demo', href: 'https://www.thepuckai.com/' },
       {
         label: 'Engineering write-up',
         href: 'https://github.com/shigenogoro/PuckAI-Engineering',
@@ -35,7 +34,7 @@ export const projects: Project[] = [
     showcase: {
       src: puckaiPlayerPage,
       alt: 'PuckAI player intelligence page for Cale Makar: tiering, radar chart, season trajectory, AI scouting report, pgvector comparables, and the prospect model’s original projection',
-      url: 'thepuckai.com/8480069',
+      url: 'PuckAI · player page',
       caption:
         'Player intelligence page: era-adjusted tier, 8D radar, grounded scouting report, pgvector comparables, and the model’s pre-NHL call scored against what he became.',
     },

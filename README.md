@@ -15,7 +15,7 @@ retrieval systems, measure them, and run them in production.
 
 ### 🔬 Research & Projects
 
-**🏒 [PuckAI](https://www.thepuckai.com)**: ask anything about a hockey player, from an NHL star to a 17-year-old in juniors, and get an answer backed by real data. I built it, launched it, and run it on my own.
+**🏒 [PuckAI](https://github.com/shigenogoro/PuckAI-Engineering)**: ask anything about a hockey player, from an NHL star to a 17-year-old in juniors, and get an answer backed by real data. I built it, launched it, and ran it on my own.
 - **Scouting chat.** Answers from 7,643 scouting reports I generated. Every number in them had to pass a checker before it was published, so the chat can't make up stats.
 - **Scout Agent.** When the reports are too old to know (an injury this week, a brand-new draft pick), it searches the web and pulls highlight videos, and it checks each video really shows the right player before showing it.
 - **Prospect model.** Predicts which teenagers will make the NHL, trained on 48 years of junior, college, and minor-league seasons.
