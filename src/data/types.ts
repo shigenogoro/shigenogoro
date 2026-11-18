@@ -16,7 +16,6 @@ export interface Profile {
   quickFacts: string[]
   location: string
   email: string
-  phone: string
   resumeUrl: string
   socials: SocialLink[]
 }

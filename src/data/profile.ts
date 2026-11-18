@@ -25,7 +25,6 @@ export const profile: Profile = {
   ],
   location: 'Amherst, MA',
   email: 'gorowen56@gmail.com',
-
   resumeUrl: resumePdf,
   socials: [
     { label: 'GitHub', href: 'https://github.com/shigenogoro', icon: 'github' },
