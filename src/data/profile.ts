@@ -4,24 +4,14 @@ import resumePdf from '../assets/Kyle_Wen_AIEngineer_Resume.pdf'
 export const profile: Profile = {
   name: 'Sheng-Kai (Kyle) Wen',
   shortName: 'Kyle Wen',
-  headline: 'AI/ML Engineer · MS Computer Science, UMass Amherst',
-  typewriter: [
-    'an AI/ML Engineer',
-    'building PuckAI',
-    'a RAG & LLM systems builder',
-    'ex-Honda Research Institute',
-  ],
+  headline: 'Software Engineer, Hockey Operations · Detroit Red Wings',
+  previously: 'Previously founder of PuckAI · MS CS, UMass Amherst',
   valueProp:
-    'I build LLM and retrieval systems, measure them, and run them in production. I like taking an idea from a research prototype to something people actually use.',
+    'I like solving real-world problems. I build LLM and retrieval products end to end, and I benchmark every change before it ships.',
   about: [
-    "I'm an AI/ML engineer, and most of my time goes into PuckAI, a hockey analytics platform I founded to give fans and scouts one place to research NHL players and prospects. I build and run it end to end: a RAG chatbot over 7,643 scouting reports, a three-stage XGBoost model that scores prospects, and a LangGraph agent that can search the web and pull highlight videos.",
-    'I finished my MS in Computer Science at UMass Amherst in 2026. While there, I joined the Hindsight team at Honda Research Institute & 99P Labs, where we built a codebase understanding system that pairs BM25 with knowledge-graph retrieval so a model can follow code across files.',
-    'Before CS, I studied electrical engineering and physics, and co-founded Fan2see, a video platform, in Taiwan. What I enjoy most is shipping something useful, measuring what works, and improving it from there.',
-  ],
-  quickFacts: [
-    'Amherst, MA',
-    'MS CS, UMass Amherst (2026)',
-    'ML/AI Engineer · Data Scientist · SWE',
+    "I'm an AI/ML engineer. I recently joined the Detroit Red Wings as a software engineer in Hockey Operations. My last project was PuckAI, an NHL analytics site I founded for fans and scouts.",
+    'I finished my MS in Computer Science at UMass Amherst in 2026. During the program I did research with Honda Research Institute & 99P Labs on whether a knowledge graph can help an LLM understand a large codebase. Our system, Hindsight, combines BM25 with graph traversal over the repository and builds on LocAgent.',
+    'My first degrees were in electrical engineering and physics, and I co-founded Fan2see, a video platform, while studying in Taiwan. I live in Amherst, MA.',
   ],
   location: 'Amherst, MA',
   email: 'gorowen56@gmail.com',
@@ -32,6 +22,12 @@ export const profile: Profile = {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/sheng-kai-wen/',
       icon: 'linkedin',
+    },
+    {
+      label: 'LeetCode',
+      href: 'https://leetcode.com/u/gorowen56/',
+      icon: 'code',
+      iconSrc: `${import.meta.env.BASE_URL}leetcode.svg`,
     },
     { label: 'Email', href: 'mailto:gorowen56@gmail.com', icon: 'envelope' },
   ],

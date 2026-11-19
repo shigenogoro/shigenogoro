@@ -50,11 +50,11 @@
 
 @layer components {
   .section-shell {
-    @apply mx-auto w-full max-w-5xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
   .section-title {
-    @apply font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl;
+    @apply font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl lg:text-5xl;
   }
 
   .section-kicker {
@@ -62,7 +62,7 @@
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-line/10 bg-fg/[0.04] px-3 py-1 text-xs font-medium text-muted;
+    @apply inline-flex items-center rounded-full border border-line/10 bg-fg/[0.04] px-3 py-1 text-sm font-medium text-muted;
   }
 
   /* Scroll viewport inside a ShowcaseFrame — slim, dark, always visible so the

@@ -1,29 +1,34 @@
 import type { Project } from './types'
-import puckaiPlayerPage from '../assets/photo/puckai_player_page_full.png'
+import puckaiPlayer from '../assets/photo/puckai_player.webp'
+import puckaiProspect from '../assets/photo/puckai_prospect.webp'
+import puckaiCompare from '../assets/photo/puckai_compare.webp'
+import puckaiTeams from '../assets/photo/puckai_teams.webp'
+import puckaiScoutAgent from '../assets/photo/puckai_scout_agent.webp'
 
 export const projects: Project[] = [
   {
     name: 'PuckAI',
-    tagline: 'NHL analytics platform with a RAG scouting chat and a tool-using agent',
+    tagline: 'NHL player and prospect analytics with a RAG chat and a tool-using agent',
     description:
-      'A production platform that tiers, profiles, and projects NHL skaters across five decades (1968 to present): 6,184 players, 54,933 scored prospects, and 7,643 grounded scouting reports. A 14-stage ETL (nine-stage NHL core plus five-stage prospect extension) ingests NHL.com, all 63 NCAA Division I programs, and 11 HockeyTech leagues into PostgreSQL + pgvector. The serving layer adds era-adjusted tiering, a three-stage XGBoost prospect model, pgvector comparables, and sub-millisecond PrefixTrie autocomplete.',
+      'I founded PuckAI to answer what I kept wondering at UMass Hockey games: could this player make the NHL, and how far could he go? I launched it as a public site in 2025.',
+    impact:
+      'Early users were my beer league teammates and classmates, and I sent it to UMass Hockey’s director of hockey operations.',
     highlights: [
-      '7,643 scouting reports, all validated and 0 quarantined. The LLM only narrates numbers the pipeline computed, and a deterministic validator checks every report before it is published',
-      'RAG chatbot with hybrid pgvector HNSW + Postgres full-text search, Voyage embeddings, cross-encoder rerank, and a deterministic team/league router: NDCG@10 0.482 to 0.686 on a 78-query benchmark, and team/league queries 0.415/0.307 to 1.000',
-      'Scout Agent: a LangGraph tool loop with Tavily web search and YouTube highlights, a two-layer fact check on web answers, an identity check on every video, an MCP server, and OpenTelemetry tracing. It picked the right tools on 26 of 26 test questions',
-      'Three-stage XGBoost hurdle model on 481,000 pre-NHL season lines: reach NHL at ROC-AUC 0.977, durability head, and ordinal landing tier across 1,295 leagues',
-      'Era-adjusted tiering with per-(season, position) z-scores so cross-era skaters rank on one ladder',
-      'pgvector nearest-neighbor comparables on an 8-dimension career aspect vector',
+      'Judging prospects needs a ground truth, so I first tiered every NHL skater by era-adjusted percentiles',
+      'Then trained XGBoost on decades of junior, college, and minor-league seasons to predict each prospect’s NHL odds and tier',
+      'Trades and playing style matter, so pgvector search finds look-alike players on an 8-dimension career profile',
+      'Compare and Teams settle debates: who’s better, which team is stronger, and whether a prospect tracks like an NHL player',
+      'Scout Agent began as a RAG chat over the scouting reports. It became a LangGraph agent that finds highlights for newer fans and searches the web for daily injury news',
     ],
     tech: [
+      'Python',
       'Next.js',
       'FastAPI',
       'PostgreSQL + pgvector',
-      'Supabase',
       'XGBoost',
-      'Voyage AI',
       'LangGraph',
-      'Vercel',
+      'MCP',
+      'OpenTelemetry',
     ],
     links: [
       {
@@ -32,24 +37,55 @@ export const projects: Project[] = [
       },
     ],
     showcase: {
-      src: puckaiPlayerPage,
-      alt: 'PuckAI player intelligence page for Cale Makar: tiering, radar chart, season trajectory, AI scouting report, pgvector comparables, and the prospect model’s original projection',
+      label: 'Player page',
+      src: puckaiPlayer,
+      alt: 'PuckAI player page for Cale Makar: tier, skill radar, season trajectory, scouting report, similar players, and the prospect model’s original projection',
       url: 'PuckAI · player page',
-      caption:
-        'Player intelligence page: era-adjusted tier, 8D radar, grounded scouting report, pgvector comparables, and the model’s pre-NHL call scored against what he became.',
+      caption: 'Player page: tier, skill radar, scouting report, and similar players.',
+      note: 'Site offline since Nov 2026.',
+      features: [
+        {
+          label: 'Prospects',
+          src: puckaiProspect,
+          url: 'PuckAI · prospect projection',
+          alt: 'PuckAI prospect page for Vaclav Nestrasil: NHL probability, expected tier, outcome distribution, scouting report, and league percentiles by season',
+          caption: 'Prospect page: chance of making the NHL, expected tier, and the scouting report.',
+        },
+        {
+          label: 'Compare',
+          src: puckaiCompare,
+          url: 'PuckAI · compare players',
+          alt: 'PuckAI comparison of Sidney Crosby and Connor McDavid: skill radar and trajectory over their NHL careers, then the same view for their prospect years',
+          caption: 'Crosby vs McDavid, over their NHL careers and their prospect years.',
+        },
+        {
+          label: 'Teams',
+          src: puckaiTeams,
+          url: 'PuckAI · team matchup',
+          alt: 'PuckAI comparison of Vegas and Carolina: tier breakdown, aspect scores, team radars, and roster cards',
+          caption: 'Vegas vs Carolina: roster tiers, team radars, and player cards.',
+        },
+        {
+          label: 'Scout Agent',
+          src: puckaiScoutAgent,
+          url: 'PuckAI · Scout Agent',
+          alt: 'Animated PuckAI Scout Agent run: it decides whether to search the web or YouTube, finds the player, searches the scouting reports, reads his file, writes the answer, and returns four YouTube highlights for Patrice Bergeron',
+          caption: 'The Scout Agent working through a question, then showing checked highlight videos.',
+        },
+      ],
     },
     featured: true,
   },
   {
-    name: 'Hindsight: Git Intelligence Layer',
+    name: 'Hindsight: Knowledge-Graph Code Retrieval',
     tagline: 'Repo-level Graph-RAG for code understanding',
     description:
-      'A Git intelligence layer that gives LLMs context from across a repository. It fuses BM25 lexical retrieval with intent-conditioned graph traversal over a heterogeneous repository graph (directory, file, class, and function nodes), built from AST-level call graphs and benchmarked on DeepCodeBench and LocBench.',
+      'Changing one function in a large codebase can break files that never mention it by name. Keyword search can’t find those, so our team at Honda Research Institute & 99P Labs built a retrieval layer that pairs BM25 with a walk over a graph of the repository’s files, classes, and functions.',
+    impact:
+      'It beat keyword search at finding the right file, and the gap was widest when the question gave no hint about location: 51.7% of DeepCodeBench questions against 38.8% for BM25.',
     highlights: [
-      'Intent-conditioned traversal: an LLM labels each question leading, lagging, or exploratory to steer graph walks before retrieval',
-      'Best file-level Acc@1 0.535 on DeepCodeBench with Qwen3-32B (+8.1 pts vs BM25, +11.2 pts vs adapted LocAgent; +12.9 pts with no location hint)',
-      'Compared four graph-construction strategies (AST call graphs, RepoGraph, DKB, CGM) and built evaluation infrastructure for Fact Recall, Acc@k, and LLM-judged answer quality',
-      'Grew out of repo-level Graph-RAG research at Honda Research Institute under Prof. Andrew McCallum',
+      'Different questions need different context, so an LLM first labels each one as leading, lagging, or exploratory, and that label decides how the graph walk goes',
+      'There was no settled way to build a repository graph, so we compared four: AST call graphs, RepoGraph, DKB, and CGM',
     ],
     tech: [
       'Python',
@@ -58,7 +94,6 @@ export const projects: Project[] = [
       'Knowledge Graphs',
       'AST Indexing',
       'LocAgent',
-      'FAISS',
     ],
     links: [
       {
@@ -68,30 +103,35 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: 'Multi-Agent RAG Filtering Pipeline',
-    tagline: 'Alternative judge strategies for noise-robust retrieval',
+    name: 'MAIN-RAG Judge Strategies',
+    tagline: 'Simple thresholds vs an LLM judge for RAG filtering',
     description:
-      'A Predictor-Judge-Generator RAG pipeline (reimplemented MAIN-RAG from scratch, since no public implementation existed) that replaces the expensive LLM judge with lightweight rule-based thresholds. Each (query, document, answer) tuple is scored by the logit margin between the "Yes" and "No" tokens, then filtered to cut noisy context before generation.',
+      'Retrieval hands the generator a lot of noise. MAIN-RAG filters it with an LLM judge and an adaptive threshold, and our team of five tested whether simpler rule-based thresholds work as well.',
+    impact:
+      'Mean+std, Otsu, and quantile thresholds matched the adaptive threshold on HotpotQA, FEVER, FiQA, and NQ. On HotpotQA with Mistral-7B, filtering raised the share of kept documents that contain the answer from 7.1% to 24.3%.',
     highlights: [
-      'Rule-based thresholds (mean+std, Otsu, quantile) matched the original adaptive-threshold results across HotpotQA, FEVER, FiQA, and NQ',
-      'Filtering raised how often the kept documents contained the answer from 7.1% to 24.3% (HotpotQA, Mistral-7B) while cutting retained context from 20 to about 11 documents',
-      'Found that the harshest cutoff works with a strong judge but breaks down with a weaker one, where dropped evidence sends F1 to 0.112',
-      'Five-person ACM-format report for UMass CS646; I implemented the baseline and ran its experiments',
+      'With no public code to start from, I wrote the baseline from scratch and ran its experiments: a Predictor-Judge-Generator pipeline that scores each document by the logit gap between the judge’s “Yes” and “No” tokens',
+      'The harshest cutoff only works with a strong judge. With a weaker one it drops real evidence and F1 falls to 0.112',
     ],
     tech: ['Python', 'RAG', 'BM25 / DPR / Contriever', 'Hugging Face'],
-    links: [],
+    links: [
+      { label: 'View on GitHub', href: 'https://github.com/shigenogoro/main-rag-judge-strategies' },
+    ],
   },
   {
     name: 'Timestamp-Aligned Summarization',
-    tagline: 'Chaptering ASR transcripts into titled, time-aligned segments',
+    tagline: 'Titled, timestamped chapters from a transcript alone',
     description:
-      'A modular chaptering pipeline that segments ASR transcripts, generates per-segment titles with a fine-tuned BART, and aligns them back to the timeline with a BERT-based self-retrieval classifier. Evaluated on MeetingBank and a 972-video VidChapters-7M subset.',
+      'Long meeting recordings are hard to skim, and most come with nothing but an auto-generated transcript. The goal was a clickable table of contents, with titled chapters and timestamps, built from the ASR transcript alone.',
+    impact:
+      'ROUGE-L 59.83 and BERTScore F1 91.44 on MeetingBank, with 80.43% of segments aligned to the right place on the timeline.',
     highlights: [
-      'ROUGE-1 62.97 / ROUGE-2 52.31 / ROUGE-L 59.83 with BERTScore F1 91.44 on MeetingBank',
-      '80.43% segment-alignment accuracy; Temporal F1 65.35% at ±15s',
-      'Established that stable duration-based segments beat semantic boundary selection under ASR-only input',
+      'I split the problem into three steps that can be tested on their own: segment the transcript, title each segment with a fine-tuned BART, and map titles back to timestamps with a BERT-based classifier',
+      'Found that fixed-length segments beat semantic boundaries when the only input is an ASR transcript (Temporal F1 65.35% at ±15 s on 972 VidChapters-7M videos)',
     ],
     tech: ['Python', 'PyTorch', 'BART', 'BERT', 'Hugging Face'],
-    links: [],
+    links: [
+      { label: 'View on GitHub', href: 'https://github.com/shigenogoro/timestamp-aligned-summarization' },
+    ],
   },
 ]

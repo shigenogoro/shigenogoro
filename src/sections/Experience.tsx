@@ -3,7 +3,7 @@ import TimelineItem from '../components/TimelineItem'
 import Reveal from '../components/Reveal'
 
 const Experience = () => (
-  <section id="experience" className="scroll-mt-20 border-t border-line/10 py-12">
+  <section id="experience" className="scroll-mt-20 lg:scroll-mt-24 border-t border-line/10 py-12 md:py-16 lg:py-24">
     <div className="section-shell">
       <Reveal>
         <p className="section-kicker">Experience</p>
@@ -11,7 +11,7 @@ const Experience = () => (
       </Reveal>
 
       <Reveal delay={0.05}>
-        <ol className="mt-10">
+        <ol className="mt-8 md:mt-12">
           {experience.map((item, i) => (
             <TimelineItem
               key={item.role}

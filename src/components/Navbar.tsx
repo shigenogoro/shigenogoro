@@ -4,9 +4,9 @@ import ThemeToggle from './ThemeToggle'
 
 const navItems = [
   { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
-  { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -30,8 +30,8 @@ const Navbar = () => {
           : 'border-b border-transparent'
       }`}
     >
-      <nav className="section-shell flex h-16 items-center justify-between">
-        <a href="#top" className="font-display text-lg font-bold tracking-tight text-fg">
+      <nav className="section-shell flex h-16 items-center justify-between lg:h-20">
+        <a href="#top" className="font-display text-xl font-bold tracking-tight text-fg lg:text-2xl">
           {profile.shortName}
           <span className="text-accent">.</span>
         </a>
@@ -42,7 +42,7 @@ const Navbar = () => {
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className="text-sm text-body transition hover:text-accent"
+                className="text-base text-body transition hover:text-accent"
               >
                 {item.label}
               </a>
@@ -54,7 +54,7 @@ const Navbar = () => {
           <a
             href={profile.resumeUrl}
             download
-            className="hidden rounded-full bg-accent px-4 py-2 text-sm font-semibold text-ink-950 transition hover:bg-accent-soft sm:inline-block"
+            className="hidden rounded-full bg-accent px-5 py-2.5 text-base font-semibold text-ink-950 transition hover:bg-accent-soft sm:inline-block"
           >
             Resume
           </a>
@@ -91,7 +91,7 @@ const Navbar = () => {
                 href={profile.resumeUrl}
                 download
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-block rounded-full bg-accent px-4 py-2 text-sm font-semibold text-ink-950"
+                className="mt-2 inline-block rounded-full bg-accent px-5 py-2.5 text-base font-semibold text-ink-950"
               >
                 Download Resume
               </a>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ProjectShowcase } from '../data/types'
 
 /** Seconds an unattended auto-scroll takes to travel the whole capture. */
@@ -20,6 +20,13 @@ const ShowcaseFrame = ({ showcase }: { showcase: ProjectShowcase }) => {
    * takes and never move at all.
    */
   const offsetRef = useRef(0)
+  /** The main capture first, then each feature view; all share the scrolling frame. */
+  const views = [
+    { label: showcase.label ?? 'Overview', src: showcase.src, url: showcase.url, alt: showcase.alt, caption: showcase.caption },
+    ...(showcase.features ?? []),
+  ]
+  const [active, setActive] = useState(0)
+  const view = views[active]
 
   const stop = useCallback(() => {
     if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
@@ -70,17 +77,29 @@ const ShowcaseFrame = ({ showcase }: { showcase: ProjectShowcase }) => {
     }
   }, [stop])
 
+  /** Switch views: stop any scroll and start the new capture from the top. */
+  const select = useCallback(
+    (i: number) => {
+      stop()
+      readerScrolledRef.current = false
+      offsetRef.current = 0
+      if (viewportRef.current) viewportRef.current.scrollTop = 0
+      setActive(i)
+    },
+    [stop],
+  )
+
   useEffect(() => stop, [stop])
 
   return (
-    <div className="flex flex-col justify-center gap-2 bg-ink-950 p-3 md:w-1/2">
-      <div className="overflow-hidden rounded-lg border border-white/10 bg-ink-900">
+    <div className="flex flex-col gap-3 bg-ink-950 p-3 sm:p-4 md:w-1/2">
+      <div className="flex flex-col overflow-hidden rounded-lg border border-white/10 bg-ink-900 md:min-h-0 md:flex-[1_1_0px]">
         <div className="flex items-center gap-1.5 border-b border-white/10 bg-ink-800/70 px-3 py-2">
           <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden="true" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" aria-hidden="true" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" aria-hidden="true" />
-          <span className="ml-2 flex-1 truncate rounded bg-ink-950 px-2 py-1 font-mono text-[10px] text-slate-400">
-            {showcase.url}
+          <span className="ml-2 flex-1 truncate rounded bg-ink-950 px-2 py-1 font-mono text-xs text-slate-400">
+            {view.url}
           </span>
         </div>
 
@@ -88,23 +107,46 @@ const ShowcaseFrame = ({ showcase }: { showcase: ProjectShowcase }) => {
           ref={viewportRef}
           tabIndex={0}
           role="group"
-          aria-label={showcase.alt}
+          aria-label={view.alt}
           onMouseEnter={start}
           onMouseLeave={rewind}
           onWheel={yieldToReader}
           onTouchStart={yieldToReader}
           onKeyDown={yieldToReader}
-          className="showcase-scroll h-[20rem] overflow-y-auto outline-none ring-accent/40 focus-visible:ring-2 md:h-[32rem]"
+          className="showcase-scroll h-[22rem] overflow-y-auto outline-none ring-accent/40 focus-visible:ring-2 md:h-auto md:min-h-[24rem] md:flex-[1_1_0px]"
         >
-          <img src={showcase.src} alt={showcase.alt} loading="lazy" className="block w-full" />
+          <img key={view.src} src={view.src} alt={view.alt} loading="lazy" className="block w-full" />
         </div>
       </div>
 
-      {showcase.caption && (
-        <p className="px-1 text-[11px] leading-snug text-slate-400">
-          {showcase.caption}
-        </p>
+      {views.length > 1 && (
+        <div className="flex flex-wrap gap-2 px-1" role="group" aria-label="Feature views">
+          {views.map((v, i) => (
+            <button
+              key={v.label}
+              type="button"
+              aria-pressed={i === active}
+              onClick={() => select(i)}
+              className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
+                i === active
+                  ? 'border-accent bg-accent/15 text-accent'
+                  : 'border-white/10 text-slate-400 hover:border-accent/60 hover:text-accent'
+              }`}
+            >
+              {v.label}
+            </button>
+          ))}
+        </div>
       )}
+
+      <p className="px-1 text-xs leading-relaxed text-slate-400 sm:text-sm">
+        {view.caption}{' '}
+        {showcase.note && <>{showcase.note} </>}
+        <span className="hidden md:inline">Hover to scroll. </span>
+        <a href={view.src} target="_blank" rel="noreferrer" className="whitespace-nowrap text-accent hover:underline">
+          Open full size ↗
+        </a>
+      </p>
     </div>
   )
 }

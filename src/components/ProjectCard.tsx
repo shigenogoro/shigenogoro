@@ -1,84 +1,100 @@
 import type { Project } from '../data/types'
 import ShowcaseFrame from './ShowcaseFrame'
 
+/** Chips are desktop-only: on phones the card ends at the result and link. */
+const Chips = ({ tech }: { tech: string[] }) => (
+  <div className="hidden flex-wrap gap-2 md:flex">
+    {tech.map((t) => (
+      <span key={t} className="chip">
+        {t}
+      </span>
+    ))}
+  </div>
+)
+
+const Links = ({ links }: { links: Project['links'] }) =>
+  links.length > 0 ? (
+    <div className="flex flex-wrap gap-x-5 gap-y-2">
+      {links.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 py-1 text-base font-semibold text-accent2 transition hover:text-accent"
+        >
+          {link.label}
+          <span aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  ) : null
+
+/** Why, result, then the technical bullets: the order every project card reads in. */
+const Story = ({ project, bulletsOnPhone }: { project: Project; bulletsOnPhone: boolean }) => (
+  <div className="max-w-3xl space-y-4 text-base leading-relaxed text-body">
+    <p>{project.description}</p>
+    {project.impact && <p>{project.impact}</p>}
+    {project.highlights.length > 0 && (
+      <ul className={`space-y-2.5 pt-1 ${bulletsOnPhone ? '' : 'hidden md:block'}`}>
+        {project.highlights.map((h) => (
+          <li key={h} className="flex gap-2.5">
+            <span className="text-accent" aria-hidden="true">▹</span>
+            <span>{h}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+)
+
+const cardClass =
+  'group overflow-hidden rounded-2xl border border-line/10 bg-surface transition hover:border-accent/40 hover:shadow-glow'
+
 const ProjectCard = ({ project }: { project: Project }) => {
-  const featured = project.featured
+  if (!project.featured) {
+    // Full-width row: identity on the left third, the story on the right.
+    // On mobile it stacks, with the link moved to the end of the card.
+    return (
+      <article
+        className={`${cardClass} grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_2fr] md:grid-rows-[auto_1fr] md:gap-x-10`}
+      >
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-display text-2xl font-bold leading-snug text-fg">{project.name}</h3>
+            <p className="mt-2 text-base font-medium leading-snug text-accent2">{project.tagline}</p>
+          </div>
+          <Chips tech={project.tech} />
+        </div>
+        <div className="md:col-start-2 md:row-span-2 md:row-start-1">
+          <Story project={project} bulletsOnPhone={false} />
+        </div>
+        <div className="md:col-start-1 md:row-start-2 md:self-end">
+          <Links links={project.links} />
+        </div>
+      </article>
+    )
+  }
+
   return (
-    <article
-      className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-line/10 bg-surface transition hover:border-accent/40 hover:shadow-glow ${
-        featured ? 'md:flex-row' : ''
-      }`}
-    >
+    <article className={`${cardClass} flex flex-col md:flex-row`}>
       {project.showcase && <ShowcaseFrame showcase={project.showcase} />}
 
-      {!project.showcase && project.image && (
-        <div
-          className={`overflow-hidden ${
-            featured
-              ? 'flex items-center justify-center bg-ink-950 p-2 md:w-1/2'
-              : 'aspect-[1.9/1]'
-          }`}
-        >
-          <img
-            src={project.image}
-            alt={`${project.name} screenshot`}
-            loading="lazy"
-            className={
-              featured
-                ? 'max-h-[34rem] w-full rounded-lg object-contain'
-                : 'h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]'
-            }
-          />
-        </div>
-      )}
-
-      <div className={`flex flex-1 flex-col p-6 ${featured ? 'md:w-1/2' : ''}`}>
-        <div className="mb-1 flex items-center gap-2">
-          <h3 className="font-display text-xl font-bold text-fg">{project.name}</h3>
-          {featured && (
-            <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">
+      <div className="flex flex-col gap-5 p-6 sm:p-8 md:w-1/2">
+        <div>
+          <div className="flex flex-wrap items-center gap-3">
+            <h3 className="font-display text-2xl font-bold text-fg">{project.name}</h3>
+            <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-accent">
               Featured
             </span>
-          )}
-        </div>
-        <p className="mb-3 text-sm font-medium text-accent2">{project.tagline}</p>
-        <p className="mb-4 text-sm leading-relaxed text-body">{project.description}</p>
-
-        {project.highlights.length > 0 && (
-          <ul className="mb-4 space-y-1.5">
-            {project.highlights.map((h) => (
-              <li key={h} className="flex gap-2 text-sm text-body">
-                <span className="mt-1 text-accent" aria-hidden="true">▹</span>
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div className="mb-5 mt-auto flex flex-wrap gap-2">
-          {project.tech.map((t) => (
-            <span key={t} className="chip">
-              {t}
-            </span>
-          ))}
-        </div>
-
-        {project.links.length > 0 && (
-          <div className="flex flex-wrap gap-3">
-            {project.links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent2 transition hover:text-accent"
-              >
-                {link.label}
-                <span aria-hidden="true">→</span>
-              </a>
-            ))}
           </div>
-        )}
+          <p className="mt-2 text-base font-medium leading-snug text-accent2">{project.tagline}</p>
+        </div>
+        <Story project={project} bulletsOnPhone />
+        <div className="mt-auto pt-1 md:space-y-4">
+          <Chips tech={project.tech} />
+          <Links links={project.links} />
+        </div>
       </div>
     </article>
   )

@@ -2,8 +2,18 @@ import type { ExperienceItem } from './types'
 import puckaiLogo from '../assets/logo/puckai_logo.png'
 import hriLogo from '../assets/logo/Honda_99PLabs_logo.png'
 import fan2seeLogo from '../assets/logo/fan2see_logo.png'
+import redWingsLogo from '../assets/logo/red_wings_logo.svg'
 
 export const experience: ExperienceItem[] = [
+  {
+    role: 'Full-Stack Software Engineer, Hockey Operations',
+    org: 'Detroit Red Wings',
+    location: 'Detroit, MI · Remote',
+    period: 'Nov 2026 – Present',
+    logo: redWingsLogo,
+    summary: 'Internal software for Hockey Operations.',
+    points: [],
+  },
   {
     role: 'Founder & AI/ML Engineer',
     org: 'PuckAI',
@@ -11,25 +21,12 @@ export const experience: ExperienceItem[] = [
     period: 'May 2025 – Nov 2026',
     logo: puckaiLogo,
     summary:
-      'I built and launched PuckAI to give hockey fans and scouts one place to research NHL players and prospects, and I run it myself: scrapers, ETL, models, serving, auth, and deployment.',
+      'Founded and ran PuckAI, a public NHL analytics site for fans and scouts. I was the only engineer: data, models, product, deployment, and the LLM bill.',
     points: [
-      'Shipped PuckAI Scout, a RAG chatbot over 7,643 AI-generated scouting reports that blends vector and keyword search (pgvector HNSW, Postgres full-text) with Voyage AI reranking.',
-      "Set up a 78-query retrieval benchmark before tuning anything; ranking quality rose 42% (NDCG@10 0.482 to 0.686). The biggest jump came from sending team and league questions through SQL filters, since embeddings could not tell a player's current team.",
-      'Learned early that prompting alone let the LLM invent statistics, so every number now comes from the data pipeline and a validator checks each report before it goes live (all 7,643 passed, 0 quarantined).',
-      'Traced answers about the wrong player to seven separate causes and fixed them. Those answers went from 9 to 0, and clean answers from 67% to 80% on a 132-question set.',
-      'Extended Scout into a LangGraph agent with web search and YouTube highlights. On a 26-question eval it picked the right tools every time with no unrequested searches, and it rejected all 14 wrong-player videos.',
-      'Trained a three-stage XGBoost model on 481,000 pre-NHL seasons across 1,295 leagues to predict which prospects make the NHL (held-out ROC-AUC 0.977).',
-    ],
-    tech: [
-      'Next.js',
-      'FastAPI',
-      'PostgreSQL + pgvector',
-      'RAG',
-      'LangGraph',
-      'XGBoost',
-      'Voyage AI',
-      'Supabase',
-      'OpenTelemetry',
+      'Prospect model: three-stage XGBoost trained on 481,000 pre-NHL seasons. It scored 54,933 prospects on their odds of reaching the NHL (ROC-AUC 0.977) and the tier they would land in.',
+      'Scout Agent: a RAG chat over 7,643 scouting reports that grew into a LangGraph agent with web search and highlight videos. On my benchmarks, ranking quality rose 42% and answers about the wrong player went from 9 to 0.',
+      'Player and team pages: era-adjusted tiers for 6,184 NHL skaters, similar-player search, and head-to-head comparison.',
+      'Cold-emailed it to the Detroit Red Wings and demoed it in my interviews.',
     ],
     links: [
       {
@@ -45,13 +42,12 @@ export const experience: ExperienceItem[] = [
     period: 'Feb 2026 – May 2026',
     logo: hriLogo,
     summary:
-      'Researched repo-level Graph-RAG for code understanding, advised by Prof. Andrew McCallum (UMass).',
+      'Graduate externship on Hindsight, a code retrieval layer for large repositories, in a team of four.',
     points: [
-      'Built Hindsight with the team, a retrieval layer that pairs BM25 with graph traversal over a repository graph built from the AST, so a model can follow dependencies across files.',
-      'With Qwen3-32B it put the correct file first for 53.5% of DeepCodeBench queries, ahead of BM25 (45.4%) and an adapted LocAgent (42.3%).',
-      'Designed the evaluation (Fact Recall, Acc@k, LLM-judged answers) and ran ablations across Llama-3.1-8B, Qwen3-8B, and Qwen3-32B on DeepCodeBench and LocBench.',
+      'Hindsight combines BM25 with graph traversal over a repository graph built from the code’s AST. With Qwen3-32B it put the right file first on 53.5% of DeepCodeBench questions, 8.1 points ahead of BM25.',
+      'I built the evaluation: Fact Recall, Acc@k at file, module, and function level, and LLM-judged answers. Then I ran the ablations across Llama-3.1-8B, Qwen3-8B, and Qwen3-32B on DeepCodeBench and LocBench.',
+      'I also built a LocAgent-based layer that links a failing test to the source code responsible for it.',
     ],
-    tech: ['Graph-RAG', 'Knowledge Graphs', 'AST Indexing', 'BM25', 'Python'],
     links: [
       {
         label: 'Blog: Hindsight on 99P Labs',
@@ -66,7 +62,7 @@ export const experience: ExperienceItem[] = [
     period: 'Apr 2021 – Apr 2022',
     logo: fan2seeLogo,
     summary:
-      'Co-founded a personalized video-message platform connecting fans with their favorite stars, built on a PERN + AWS stack.',
+      'Co-founded a platform where fans could order personalized video messages from celebrities.',
     points: [
       'Launched the first version on Bubble.io, then rebuilt it on React, Node.js, Express, and PostgreSQL once it outgrew no-code.',
       'Cut media-processing time 25% by moving transforms into an async AWS Lambda/S3 pipeline, and grew to hundreds of active users at about 30% month over month.',

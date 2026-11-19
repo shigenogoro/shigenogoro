@@ -19,7 +19,6 @@ retrieval systems, measure them, and run them in production.
 - **Scouting chat.** Answers from 7,643 scouting reports I generated. Every number in them had to pass a checker before it was published, so the chat can't make up stats.
 - **Scout Agent.** When the reports are too old to know (an injury this week, a brand-new draft pick), it searches the web and pulls highlight videos, and it checks each video really shows the right player before showing it.
 - **Prospect model.** Predicts which teenagers will make the NHL, trained on 48 years of junior, college, and minor-league seasons.
-- [How it's built →](https://github.com/shigenogoro/PuckAI-Engineering)
 
 **🧭 [Hindsight](https://medium.com/99p-labs/hindsight-a-knowledge-graph-layer-for-navigating-large-codebases-6acf331c1766)** (Honda Research Institute & 99P Labs): ask "what breaks if I change this?" in a large codebase and get pointed to the right files. It searches a knowledge graph built from the code itself, and it finds the right file first more often than keyword search.
 

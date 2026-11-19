@@ -9,8 +9,7 @@ export const education: EducationItem[] = [
     degree: 'M.S. in Computer Science (GPA 3.83 / 4.0)',
     period: 'Sep 2024 – May 2026',
     details: [
-      'Focus: Retrieval-Augmented Generation, LLMs, Information Retrieval.',
-      'AI Researcher (Graduate Extern) at Honda Research Institute & 99P Labs, with Prof. Andrew McCallum.',
+      'Coursework: Machine Learning, Information Retrieval, Distributed Systems, Database Design & Implementation.',
     ],
     logo: umassLogo,
   },
